@@ -6,7 +6,12 @@ import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import filedialog, messagebox
 from datetime import datetime
+import subprocess
+
 import os
+# Carpeta actual
+ruta_actual = os.getcwd()
+ruta_prueba = os.path.join(ruta_actual, "prueba.py")
 
 def get_s3_client():
     return credencialesAWS.getCredentials()
@@ -119,8 +124,7 @@ def upload_file(bucket_name):
         # Preguntar si quiere abrir el dashboard
         abrir = messagebox.askyesno("Abrir dashboard", "¿Deseas abrir el dashboard ahora?")
         if abrir:
-            import subprocess
-            subprocess.Popen(["streamlit", "run", "prueba.py"], shell=True)
+            subprocess.Popen(["streamlit", "run", ruta_prueba], shell=True)
             
     except ClientError as e:
         messagebox.showerror("Error", f"No se pudo subir el archivo:\n{e}")
