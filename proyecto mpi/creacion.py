@@ -11,7 +11,7 @@ import subprocess
 import os
 # Carpeta actual
 ruta_actual = os.getcwd()
-ruta_prueba = os.path.join(ruta_actual, "prueba.py")
+ruta_prueba = os.path.join(ruta_actual,"AWS\proyecto mpi", "prueba.py")
 
 def get_s3_client():
     return credencialesAWS.getCredentials()
